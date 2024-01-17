@@ -14,7 +14,9 @@ return require('packer').startup(function(use)
   }
 
   use({ 'rose-pine/neovim', as = 'rose-pine' })
-  vim.cmd('colorscheme rose-pine')
+  use({ "catppuccin/nvim", as = "catppuccin" })
+  -- vim.cmd('colorscheme rose-pine')
+  vim.cmd('colorscheme catppuccin')
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
@@ -38,9 +40,9 @@ return require('packer').startup(function(use)
   -- use('vim-airline/vim-airline')
   -- use('vim-airline/vim-airline-themes')
   use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
 
   use('liuchengxu/vim-which-key')
 
@@ -71,4 +73,34 @@ return require('packer').startup(function(use)
           {'rafamadriz/friendly-snippets'}, -- Optional
       }
   }
+
+  -- Debug
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'mfussenegger/nvim-dap-python'
+  --
+
+  use {
+      "folke/trouble.nvim",
+      requires = {
+         "nvim-tree/nvim-web-devicons",
+     },
+     opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+     },
+  }
+
+  use("tpope/vim-surround")
+
+  use ("folke/flash.nvim")
+
+  -- Database
+  use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-ui'
+
+  use 'christoomey/vim-tmux-navigator'
 end)

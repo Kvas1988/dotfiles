@@ -1,6 +1,7 @@
 require'nvim-treesitter.configs'.setup {
+  prefer_git = true,
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "help", "c", "lua", "vim", "help", "query", "python", "javascript" },
+  ensure_installed = { "c", "lua", "vim", "query", "python", "help" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -17,5 +18,5 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
-  },
+  }
 }

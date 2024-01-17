@@ -62,6 +62,24 @@ end)
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+    -- virtual_text = true
+    virtual_text = false
 })
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
+
+
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
+local telescope = require("telescope")
+
+telescope.setup {
+  defaults = {
+    mappings = {
+      -- i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<leader>ft"] = trouble.open_with_trouble },
+    },
+  },
+}
+
+
