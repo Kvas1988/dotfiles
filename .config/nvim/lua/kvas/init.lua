@@ -1,3 +1,5 @@
-require("kvas.remap")
-require("kvas.packer")
-require("kvas.set")
+require('kvas.lazy')
+require('kvas.set')
+require('kvas.remap')
+
+require('kvas.theme')
