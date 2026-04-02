@@ -53,33 +53,33 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
--- python lsp
-require 'lspconfig'.ruff.setup{}
-
-require'lspconfig'.ruff_lsp.setup{
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
+-- SERVERS LIST
+local servers = {
+    "pyright",
+    "glsl_analyzer",
+    "gopls",
+    "lua_ls",
+    -- "tsserver"
 }
+-- install lsp itself
+require("mason-lspconfig").setup({
+  ensure_installed = servers
+})
 
--- require'lspconfig'.pylsp.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.glsl_analyzer.setup{}
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.lua_ls.setup{}
-require'lspconfig'.clangd.setup({
+-- enable server
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
+end
+
+vim.lsp.config('clangd', {
   cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
   init_options = {
     fallbackFlags = { '-std=c++17'},
   },
 })
 
--- js
-require'lspconfig'.tsserver.setup{}
--- require'lspconfig'.emmet_language_server.setup{}
+
+-- vim.lsp.config().emmet_language_server.setup{}
 
 -- local lspconfig = require('lspconfig')
 -- local configs = require('lspconfig/configs')
